@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-SOURCE_LOCAL_PATH=$1
-PROCESSING_GCS_PATH=$2
-ARCHIVE_GCS_PATH=$3
+# SOURCE_LOCAL_PATH=$1
+# PROCESSING_GCS_PATH=$2
+# ARCHIVE_GCS_PATH=$3
 
 TMP_DIR=/tmp/rdl_demo
 mkdir -p "$TMP_DIR"
@@ -52,11 +52,6 @@ FORMATTED_DATE=$(date -d "$BATCH_DATE" +"%d-%b-%Y")
 # append footer
 printf "\n<DATE> %s <ROWS> %s\n" "$FORMATTED_DATE" "$ROW_COUNT" >> "$LOCAL_FILE"
 
-# upload to processing
-gsutil cp "$LOCAL_FILE" "$PROCESSING_GCS_PATH/$NEW_FILE"
-
-# archive original local file to GCS
-gsutil mv \
 gs://rdl_demo_project_bucket/landing/$(basename "$FILE_NAME") \
 $ARCHIVE_GCS_PATH/$(basename "$FILE_NAME")
 
