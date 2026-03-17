@@ -1,21 +1,4 @@
-#!/bin/bash
-set -e
-
-SOURCE_LOCAL_PATH=$1
-PROCESSING_GCS_PATH=$2
-ARCHIVE_GCS_PATH=$3
-
-TMP_DIR=/tmp/rdl_demo
-mkdir -p "$TMP_DIR"
-
-# find csv file
-FILE_NAME=$(find "$SOURCE_LOCAL_PATH" -type f -name "*.csv" | head -1)
-
-if [ -z "$FILE_NAME" ]; then
-    echo "❌ No CSV file found"
-    exit 1
-fi
-
+# HIIII
 BASENAME=$(basename "$FILE_NAME")
 
 echo "Found file: $BASENAME"
